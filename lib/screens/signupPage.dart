@@ -1,9 +1,5 @@
-import 'dart:io';
-
 import 'package:automatik_customer_final_project/screens/homePage.dart';
 import 'package:automatik_customer_final_project/screens/loginPage.dart';
-import 'package:automatik_customer_final_project/screens/profilePage.dart';
-import 'package:automatik_customer_final_project/screens/splashPage.dart';
 import 'package:automatik_customer_final_project/widgets/auth_service.dart';
 import 'package:automatik_customer_final_project/widgets/dimentions.dart';
 import 'package:automatik_customer_final_project/widgets/roundedButton.dart';
@@ -84,7 +80,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             SizedBox(height: Dimensions.height20 + Dimensions.height10),
             Container(
               margin: EdgeInsets.only(
-                  left: Dimensions.height20, right: Dimensions.height20),
+                  left: Dimensions.height30, right: Dimensions.height30),
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(Dimensions.radius20),
@@ -108,6 +104,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   labelText: 'Name',
                   prefixIcon: const Icon(
                     Icons.person,
+                    color: Colors.black,
                   ),
                 ),
               ),
@@ -115,7 +112,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             SizedBox(height: Dimensions.height10),
             Container(
               margin: EdgeInsets.only(
-                  left: Dimensions.height20, right: Dimensions.height20),
+                  left: Dimensions.height30, right: Dimensions.height30),
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(Dimensions.radius20),
@@ -136,6 +133,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   labelText: 'Address',
                   prefixIcon: const Icon(
                     Icons.location_on_rounded,
+                    color: Colors.black,
                   ),
                 ),
               ),
@@ -143,7 +141,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             SizedBox(height: Dimensions.height10),
             Container(
               margin: EdgeInsets.only(
-                  left: Dimensions.height20, right: Dimensions.height20),
+                  left: Dimensions.height30, right: Dimensions.height30),
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(Dimensions.radius20),
@@ -167,6 +165,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   labelText: 'Email',
                   prefixIcon: const Icon(
                     Icons.email,
+                    color: Colors.black,
                   ),
                 ),
               ),
@@ -174,7 +173,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             SizedBox(height: Dimensions.height10),
             Container(
               margin: EdgeInsets.only(
-                  left: Dimensions.height20, right: Dimensions.height20),
+                  left: Dimensions.height30, right: Dimensions.height30),
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(Dimensions.radius20),
@@ -197,6 +196,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 decoration: textFieldDecoration.copyWith(
                   labelText: 'Phone Number',
                   prefixIcon: const Icon(
+                    color: Colors.black,
                     Icons.phone,
                   ),
                 ),
@@ -205,7 +205,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             SizedBox(height: Dimensions.height10),
             Container(
               margin: EdgeInsets.only(
-                  left: Dimensions.height20, right: Dimensions.height20),
+                  left: Dimensions.height30, right: Dimensions.height30),
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(Dimensions.radius20),
@@ -228,6 +228,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 decoration: textFieldDecoration.copyWith(
                   labelText: 'Password',
                   prefixIcon: const Icon(
+                    color: Colors.black,
                     Icons.lock,
                   ),
                   suffixIcon: IconButton(
@@ -246,7 +247,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             SizedBox(height: Dimensions.height10),
             Container(
               margin: EdgeInsets.only(
-                  left: Dimensions.height20, right: Dimensions.height20),
+                  left: Dimensions.height30, right: Dimensions.height30),
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(Dimensions.radius20),
@@ -269,6 +270,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   labelText: 'Confirm Password',
                   prefixIcon: const Icon(
                     Icons.lock,
+                    color: Colors.black,
                   ),
                   suffixIcon: IconButton(
                     icon: Icon(hidePassword1
@@ -287,7 +289,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               margin: const EdgeInsets.only(top: 16.0),
               child: RoundedButton(
                 buttonTitle: 'Register',
-                color: Colors.blueAccent,
+                color: Colors.teal.shade200,
                 buttonOnPressed: () async {
                   uploadInfo();
                 },
@@ -298,12 +300,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
               children: [
                 Text(
                   "Alredy have an account?",
-                  style: TextStyle(color: Colors.grey[700]),
+                  style: TextStyle(color: Colors.grey[700], fontSize: 20),
                 ),
                 TextButton(
-                  child: Text(
+                  child: const Text(
                     "Login here",
-                    style: TextStyle(color: Colors.grey[850]),
+                    style: TextStyle(color: Colors.blue, fontSize: 20),
                   ),
                   onPressed: () {
                     Navigator.push(context,
