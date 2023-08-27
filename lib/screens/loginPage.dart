@@ -1,6 +1,7 @@
 import 'package:automatik_customer_final_project/screens/homePage.dart';
 import 'package:automatik_customer_final_project/screens/signupPage.dart';
 import 'package:automatik_customer_final_project/widgets/auth_service.dart';
+import 'package:automatik_customer_final_project/widgets/dimentions.dart';
 import 'package:automatik_customer_final_project/widgets/roundedButton.dart';
 import 'package:automatik_customer_final_project/widgets/textfield.dart';
 import 'package:automatik_customer_final_project/widgets/validators.dart';
@@ -29,6 +30,8 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
+              SizedBox(height: Dimensions.screenHeight * 0.07),
+              SizedBox(height: Dimensions.height20 + Dimensions.height10),
               const SizedBox(height: 10),
               TextFormField(
                 validator: UnifiedValidators.emailValidator,
@@ -39,13 +42,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 onEditingComplete: () {
                   passwordFN.requestFocus();
                 },
-                style: const TextStyle(color: Colors.blueAccent),
+                style: const TextStyle(color: Colors.black),
                 decoration: textFieldDecoration.copyWith(
                   labelText: "Email",
                   prefixIcon: const Icon(Icons.email),
                 ),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: Dimensions.height20 + Dimensions.height10),
               TextFormField(
                 validator: UnifiedValidators.passwordValidator,
                 controller: passwordTextEditingController,
@@ -70,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   final message = await AuthController().login(
                       email: emailTextEditingController.text,
                       password: passwordTextEditingController.text);
-                  if (message!.contains('Success')) {
+                  if (message!.contains('Looged in Successfully')) {
                     // ignore: use_build_context_synchronously
                     Navigator.push(context,
                         MaterialPageRoute(builder: (c) => HomeScreen()));
@@ -87,12 +90,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Text(
                     "Don't have an account yet?",
-                    style: TextStyle(color: Colors.grey[700]),
+                    style: TextStyle(color: Colors.grey[700], fontSize: 20),
                   ),
                   TextButton(
-                    child: Text(
+                    child: const Text(
                       "Click here",
-                      style: TextStyle(color: Colors.grey[850]),
+                      style: TextStyle(color: Colors.blue, fontSize: 20),
                     ),
                     onPressed: () {
                       Navigator.push(
