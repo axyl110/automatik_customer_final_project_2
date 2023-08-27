@@ -14,11 +14,9 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   startTimer() {
     final FirebaseAuth fAuth = FirebaseAuth.instance;
-    User? currentFirebaseUser;
 
     Timer(const Duration(seconds: 2), () async {
       if (await fAuth.currentUser != null) {
-        currentFirebaseUser = fAuth.currentUser;
         // ignore: use_build_context_synchronously
         Navigator.push(
             context, MaterialPageRoute(builder: (c) => const HomeScreen()));

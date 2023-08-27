@@ -1,4 +1,3 @@
-import 'package:automatik_customer_final_project/screens/loginPage.dart';
 import 'package:automatik_customer_final_project/screens/profilePage.dart';
 import 'package:flutter/material.dart';
 

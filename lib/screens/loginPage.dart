@@ -73,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   final message = await AuthController().login(
                       email: emailTextEditingController.text,
                       password: passwordTextEditingController.text);
-                  if (message!.contains('Looged in Successfully')) {
+                  if (message!.contains('Success')) {
                     // ignore: use_build_context_synchronously
                     Navigator.push(context,
                         MaterialPageRoute(builder: (c) => HomeScreen()));
