@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_null_comparison
 
 import 'package:automatik_customer_final_project/screens/loginPage.dart';
+import 'package:automatik_customer_final_project/screens/navbar.dart';
 import 'package:automatik_customer_final_project/widgets/auth_service.dart';
 import 'package:automatik_customer_final_project/widgets/dimentions.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -23,7 +24,7 @@ class _ProfilePageState extends State<ProfilePage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
   final CollectionReference users =
-      FirebaseFirestore.instance.collection('customers');
+      FirebaseFirestore.instance.collection('Customers');
 
   @override
   void initState() {
@@ -38,23 +39,26 @@ class _ProfilePageState extends State<ProfilePage> {
       if (user != null) {
         setState(() {
           loggedInUser = user;
-          // print('this is:  ${loggedInUser!.email}');
+          print('this is:  ${loggedInUser!.email}');
         });
       }
     } catch (e) {
-      // print(e);
+      print(e);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavDrawer(),
+      appBar: AppBar(
+        title: Text("PROFILE"),
+      ),
       body: Container(
           margin:
               EdgeInsets.only(top: Dimensions.height20 + Dimensions.height30),
           width: double.maxFinite,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
                 child: StreamBuilder<QuerySnapshot>(
@@ -221,77 +225,78 @@ class _ProfilePageState extends State<ProfilePage> {
     }
 
     await showModalBottomSheet(
-        isScrollControlled: true,
-        context: context,
-        builder: (BuildContext ctx) {
-          return Padding(
-            padding: EdgeInsets.only(
-                top: 20,
-                left: 20,
-                right: 20,
-                bottom: MediaQuery.of(ctx).viewInsets.bottom + 30),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TextField(
-                  controller: _nameController,
-                  decoration: const InputDecoration(labelText: 'Name'),
+      isScrollControlled: true,
+      context: context,
+      builder: (BuildContext ctx) {
+        return Padding(
+          padding: EdgeInsets.only(
+              top: 20,
+              left: 20,
+              right: 20,
+              bottom: MediaQuery.of(ctx).viewInsets.bottom + 30),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextField(
+                controller: _nameController,
+                decoration: const InputDecoration(labelText: 'Name'),
+              ),
+              TextField(
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
+                controller: _phoneController,
+                decoration: const InputDecoration(
+                  labelText: 'Phone',
                 ),
-                TextField(
-                  keyboardType:
-                      const TextInputType.numberWithOptions(decimal: true),
-                  controller: _phoneController,
-                  decoration: const InputDecoration(
-                    labelText: 'Phone',
-                  ),
+              ),
+              TextField(
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
+                controller: _emailController,
+                decoration: const InputDecoration(
+                  labelText: 'Email',
                 ),
-                TextField(
-                  keyboardType:
-                      const TextInputType.numberWithOptions(decimal: true),
-                  controller: _emailController,
-                  decoration: const InputDecoration(
-                    labelText: 'Email',
-                  ),
+              ),
+              TextField(
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
+                controller: _addressController,
+                decoration: const InputDecoration(
+                  labelText: 'Address',
                 ),
-                TextField(
-                  keyboardType:
-                      const TextInputType.numberWithOptions(decimal: true),
-                  controller: _addressController,
-                  decoration: const InputDecoration(
-                    labelText: 'Address',
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                ElevatedButton(
-                  child: const Text('Update'),
-                  onPressed: () async {
-                    final String name = _nameController.text;
-                    final String phone = _phoneController.text;
-                    final String email = _emailController.text;
-                    final String address = _addressController.text;
-                    if (name != null &&
-                        phone != null &&
-                        email != null &&
-                        address != null) {
-                      await users.doc(documentSnapshot!.id).update({
-                        "Name": name,
-                        "Phone": phone,
-                        "Email": email,
-                        "Address": address
-                      });
-                      _nameController.text = '';
-                      _phoneController.text = '';
-                      _emailController.text = '';
-                      _addressController.text = '';
-                    }
-                  },
-                ),
-              ],
-            ),
-          );
-        });
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                child: const Text('Update'),
+                onPressed: () async {
+                  final String name = _nameController.text;
+                  final String phone = _phoneController.text;
+                  final String email = _emailController.text;
+                  final String address = _addressController.text;
+                  if (name != null &&
+                      phone != null &&
+                      email != null &&
+                      address != null) {
+                    await users.doc(documentSnapshot!.id).update({
+                      "Name": name,
+                      "Phone": phone,
+                      "Email": email,
+                      "Address": address
+                    });
+                    _nameController.text = '';
+                    _phoneController.text = '';
+                    _emailController.text = '';
+                    _addressController.text = '';
+                  }
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }
