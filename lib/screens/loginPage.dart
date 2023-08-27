@@ -1,0 +1,112 @@
+import 'package:automatik_customer_final_project/screens/homePage.dart';
+import 'package:automatik_customer_final_project/screens/signupPage.dart';
+import 'package:automatik_customer_final_project/widgets/auth_service.dart';
+import 'package:automatik_customer_final_project/widgets/roundedButton.dart';
+import 'package:automatik_customer_final_project/widgets/textfield.dart';
+import 'package:automatik_customer_final_project/widgets/validators.dart';
+import 'package:flutter/material.dart';
+
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController emailTextEditingController = TextEditingController();
+  TextEditingController passwordTextEditingController = TextEditingController();
+  FocusNode emailFN = FocusNode();
+  FocusNode passwordFN = FocusNode();
+  bool hidePassword = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              const SizedBox(height: 10),
+              TextFormField(
+                validator: UnifiedValidators.emailValidator,
+                controller: emailTextEditingController,
+                focusNode: emailFN,
+                keyboardType: TextInputType.emailAddress,
+                textAlign: TextAlign.start,
+                onEditingComplete: () {
+                  passwordFN.requestFocus();
+                },
+                style: const TextStyle(color: Colors.blueAccent),
+                decoration: textFieldDecoration.copyWith(
+                  labelText: "Email",
+                  prefixIcon: const Icon(Icons.email),
+                ),
+              ),
+              const SizedBox(height: 10),
+              TextFormField(
+                validator: UnifiedValidators.passwordValidator,
+                controller: passwordTextEditingController,
+                focusNode: passwordFN,
+                textAlign: TextAlign.start,
+                keyboardType: TextInputType.text,
+                obscureText: hidePassword,
+                onEditingComplete: () {
+                  passwordFN.unfocus();
+                },
+                style: const TextStyle(color: Colors.blueAccent),
+                decoration: textFieldDecoration.copyWith(
+                  labelText: "Password",
+                  prefixIcon: const Icon(Icons.lock),
+                ),
+              ),
+              const SizedBox(height: 20.0),
+              RoundedButton(
+                color: Colors.lightBlueAccent,
+                buttonTitle: 'LOGIN',
+                buttonOnPressed: () async {
+                  final message = await AuthController().login(
+                      email: emailTextEditingController.text,
+                      password: passwordTextEditingController.text);
+                  if (message!.contains('Success')) {
+                    // ignore: use_build_context_synchronously
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (c) => HomeScreen()));
+                  }
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(message),
+                    ),
+                  );
+                },
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Don't have an account yet?",
+                    style: TextStyle(color: Colors.grey[700]),
+                  ),
+                  TextButton(
+                    child: Text(
+                      "Click here",
+                      style: TextStyle(color: Colors.grey[850]),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (c) => const SignUpScreen()));
+                    },
+                  )
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
