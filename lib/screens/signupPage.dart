@@ -1,5 +1,7 @@
-import 'package:automatik_customer_final_project/screens/homePage.dart';
+import 'dart:io';
+
 import 'package:automatik_customer_final_project/screens/loginPage.dart';
+import 'package:automatik_customer_final_project/screens/navbar.dart';
 import 'package:automatik_customer_final_project/widgets/auth_service.dart';
 import 'package:automatik_customer_final_project/widgets/dimentions.dart';
 import 'package:automatik_customer_final_project/widgets/roundedButton.dart';
@@ -11,6 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -58,11 +62,38 @@ class _SignUpScreenState extends State<SignUpScreen> {
       firebase_storage.FirebaseStorage.instance;
   User? user = FirebaseAuth.instance.currentUser;
 
+  File? _photo;
+  final ImagePicker _picker = ImagePicker();
+  String? imageUrl;
+
+  Future imgFromGallery() async {
+    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickedFile != null) {
+        _photo = File(pickedFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+
   Future uploadInfo() async {
+    if (_photo == null) return;
+    final fileName = basename(_photo!.path);
+    const destination = 'CustomerProfilePictures/';
+
     try {
-      AuthController().signUpUser(
-          nameC.text, addressC.text, emailC.text, pass2C.text, phoneC.text);
-      Get.to(() => HomeScreen());
+      final ref = firebase_storage.FirebaseStorage.instance
+          .ref(destination)
+          .child(fileName);
+      await ref.putFile(_photo!);
+
+      //IMAGE URL
+      imageUrl = await ref.getDownloadURL();
+      await AuthController().signUpUser(nameC.text, addressC.text, emailC.text,
+          pass2C.text, phoneC.text, imageUrl!);
+      Get.to(() => const NavBar());
     } catch (e) {
       print('error occurred');
     }
@@ -76,7 +107,39 @@ class _SignUpScreenState extends State<SignUpScreen> {
         physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
-            SizedBox(height: Dimensions.screenHeight * 0.07),
+            SizedBox(height: Dimensions.screenHeight * 0.09),
+            Center(
+              child: GestureDetector(
+                onTap: () {
+                  _showPicker(context);
+                },
+                child: CircleAvatar(
+                  radius: 55,
+                  backgroundColor: Colors.teal,
+                  child: _photo != null
+                      ? ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: Image.file(
+                            _photo!,
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.fitHeight,
+                          ),
+                        )
+                      : Container(
+                          decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                              borderRadius: BorderRadius.circular(50)),
+                          width: 100,
+                          height: 100,
+                          child: Icon(
+                            Icons.camera_alt,
+                            color: Colors.grey[800],
+                          ),
+                        ),
+                ),
+              ),
+            ),
             SizedBox(height: Dimensions.height20 + Dimensions.height10),
             Container(
               margin: EdgeInsets.only(
@@ -299,7 +362,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Alredy have an account?",
+                  "Already have an account?",
                   style: TextStyle(color: Colors.grey[700], fontSize: 20),
                 ),
                 TextButton(
@@ -318,5 +381,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ),
     );
+  }
+
+  void _showPicker(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc) {
+          return SafeArea(
+            child: Wrap(
+              children: <Widget>[
+                ListTile(
+                    leading: const Icon(Icons.photo_library),
+                    title: const Text('Gallery'),
+                    onTap: () {
+                      imgFromGallery();
+                      Navigator.of(context).pop();
+                    }),
+              ],
+            ),
+          );
+        });
   }
 }

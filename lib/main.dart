@@ -1,3 +1,4 @@
+import 'package:automatik_customer_final_project/screens/navbar.dart';
 import 'package:automatik_customer_final_project/screens/signupPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

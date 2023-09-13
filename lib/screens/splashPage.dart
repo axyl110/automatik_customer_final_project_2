@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:automatik_customer_final_project/screens/homePage.dart';
 import 'package:automatik_customer_final_project/screens/loginPage.dart';
+import 'package:automatik_customer_final_project/screens/navbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -14,14 +14,12 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   startTimer() {
     final FirebaseAuth fAuth = FirebaseAuth.instance;
-    User? currentFirebaseUser;
 
     Timer(const Duration(seconds: 2), () async {
       if (await fAuth.currentUser != null) {
-        currentFirebaseUser = fAuth.currentUser;
         // ignore: use_build_context_synchronously
         Navigator.push(
-            context, MaterialPageRoute(builder: (c) => const HomeScreen()));
+            context, MaterialPageRoute(builder: (c) => const NavBar()));
       } else {
         // ignore: use_build_context_synchronously
         Navigator.push(

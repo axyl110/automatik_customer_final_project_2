@@ -1,4 +1,4 @@
-import 'package:automatik_customer_final_project/screens/homePage.dart';
+import 'package:automatik_customer_final_project/screens/navbar.dart';
 import 'package:automatik_customer_final_project/screens/signupPage.dart';
 import 'package:automatik_customer_final_project/widgets/auth_service.dart';
 import 'package:automatik_customer_final_project/widgets/dimentions.dart';
@@ -73,10 +73,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   final message = await AuthController().login(
                       email: emailTextEditingController.text,
                       password: passwordTextEditingController.text);
-                  if (message!.contains('Looged in Successfully')) {
+                  if (message!.contains('Success')) {
                     // ignore: use_build_context_synchronously
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (c) => HomeScreen()));
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (c) => NavBar()));
                   }
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
