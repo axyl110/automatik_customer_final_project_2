@@ -1,7 +1,6 @@
 // ignore_for_file: unnecessary_null_comparison
 
 import 'package:automatik_customer_final_project/screens/loginPage.dart';
-import 'package:automatik_customer_final_project/screens/navbar.dart';
 import 'package:automatik_customer_final_project/widgets/auth_service.dart';
 import 'package:automatik_customer_final_project/widgets/dimentions.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -50,10 +49,6 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: NavDrawer(),
-      appBar: AppBar(
-        title: Text("PROFILE"),
-      ),
       body: Container(
           margin:
               EdgeInsets.only(top: Dimensions.height20 + Dimensions.height30),

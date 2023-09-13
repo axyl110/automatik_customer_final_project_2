@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class ACServices extends StatefulWidget {
+  const ACServices({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<ACServices> createState() => _ACServicesState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ACServicesState extends State<ACServices> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
                   size: 20.0,
                 ),
                 title: Text(
-                  'AC Services',
+                  'AC Installation',
                   style: TextStyle(
                     color: Colors.teal,
                     fontWeight: FontWeight.bold,
@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                   size: 20.0,
                 ),
                 title: Text(
-                  'Tire Services',
+                  'AC Repairing',
                   style: TextStyle(
                     color: Colors.teal,
                     fontWeight: FontWeight.bold,
@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                   size: 20.0,
                 ),
                 title: Text(
-                  "Car Repair",
+                  "AC Dismounting",
                   style: TextStyle(
                       color: Colors.teal,
                       fontWeight: FontWeight.bold,
@@ -99,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                   size: 20.0,
                 ),
                 title: Text(
-                  "Car Wash Services",
+                  "Other AC Services",
                   style: TextStyle(
                       color: Colors.teal,
                       fontWeight: FontWeight.bold,

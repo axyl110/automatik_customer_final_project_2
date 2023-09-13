@@ -1,37 +1,62 @@
+import 'package:automatik_customer_final_project/screens/homePage.dart';
+import 'package:automatik_customer_final_project/screens/profilePage.dart';
 import 'package:flutter/material.dart';
 
-class NavDrawer extends StatelessWidget {
+class NavBar extends StatefulWidget {
+  const NavBar({Key? key}) : super(key: key);
+
+  @override
+  State<NavBar> createState() => _NavBarState();
+}
+
+class _NavBarState extends State<NavBar> {
+  int _selectedIndex = 0;
+
+  List pages = [
+    const HomePage(),
+    const Text("HISTORY"),
+    const Text("MESSAGES"),
+    const ProfilePage()
+  ];
+
+  void onTapNav(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          const DrawerHeader(
-            child: Text(
-              'PROFILE',
-              style: TextStyle(color: Colors.white, fontSize: 25),
-            ),
-            decoration: BoxDecoration(
-                color: Colors.green,
-                image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage('assets/images/cover.jpg'))),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("HOME"),
+      ),
+      body: pages[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.teal,
+        unselectedItemColor: Colors.grey,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        selectedFontSize: 0.0,
+        unselectedFontSize: 0.0,
+        currentIndex: _selectedIndex,
+        onTap: onTapNav,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: "Home",
           ),
-          ListTile(
-            leading: Icon(Icons.system_security_update_good_sharp),
-            title: Text('Update'),
-            onTap: () => {},
+          BottomNavigationBarItem(
+            icon: Icon(Icons.archive_outlined),
+            label: "History",
           ),
-          ListTile(
-            leading: Icon(Icons.password),
-            title: Text('Change Password'),
-            onTap: () => {Navigator.of(context).pop()},
+          BottomNavigationBarItem(
+            icon: Icon(Icons.message_outlined),
+            label: "Messages",
           ),
-          ListTile(
-            leading: Icon(Icons.logout),
-            title: Text('Logout'),
-            onTap: () => {Navigator.of(context).pop()},
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outlined),
+            label: "Profile",
           ),
         ],
       ),

@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:automatik_customer_final_project/screens/homePage.dart';
 import 'package:automatik_customer_final_project/screens/loginPage.dart';
+import 'package:automatik_customer_final_project/screens/navbar.dart';
 import 'package:automatik_customer_final_project/widgets/auth_service.dart';
 import 'package:automatik_customer_final_project/widgets/dimentions.dart';
 import 'package:automatik_customer_final_project/widgets/roundedButton.dart';
@@ -93,7 +93,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       imageUrl = await ref.getDownloadURL();
       await AuthController().signUpUser(nameC.text, addressC.text, emailC.text,
           pass2C.text, phoneC.text, imageUrl!);
-      Get.to(() => const HomeScreen());
+      Get.to(() => const NavBar());
     } catch (e) {
       print('error occurred');
     }
