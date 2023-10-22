@@ -1,7 +1,10 @@
+import 'package:automatik_customer_final_project/screens/services/BrakeServices.dart';
+import 'package:automatik_customer_final_project/screens/services/ElectricalServices.dart';
+import 'package:automatik_customer_final_project/screens/services/WheelServices.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'ACservices.dart';
+import 'EngineServices.dart';
 
 class Services extends StatefulWidget {
   const Services({super.key});
@@ -38,19 +41,19 @@ class ServicesState extends State<Services> {
             ),
             Card(
               color: Colors.white,
-              margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 125.0),
+              margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 75.0),
               child: GestureDetector(
                 onTap: () {
-                  Get.to(() => const ACServices());
+                  Get.to(() => const EngineServices());
                 },
                 child: const ListTile(
                   leading: Icon(
-                    Icons.ac_unit_outlined,
+                    Icons.engineering,
                     color: Colors.teal,
                     size: 20.0,
                   ),
                   title: Text(
-                    'AC Repair and Services',
+                    'ENGINE SERVICES',
                     style: TextStyle(
                       color: Colors.teal,
                       fontWeight: FontWeight.bold,
@@ -60,67 +63,85 @@ class ServicesState extends State<Services> {
                 ),
               ),
             ),
-            const Card(
+            Card(
               color: Colors.white,
-              margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 125.0),
-              child: ListTile(
-                leading: Icon(
-                  Icons.tire_repair_outlined,
-                  color: Colors.teal,
-                  size: 20.0,
-                ),
-                title: Text(
-                  'Tire Services',
-                  style: TextStyle(
+              margin:
+                  const EdgeInsets.symmetric(vertical: 15.0, horizontal: 75.0),
+              child: GestureDetector(
+                onTap: () {
+                  Get.to(() => const WheelServices());
+                },
+                child: const ListTile(
+                  leading: Icon(
+                    Icons.tire_repair,
                     color: Colors.teal,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.0,
+                    size: 20.0,
+                  ),
+                  title: Text(
+                    'WHEEL SERVICES',
+                    style: TextStyle(
+                      color: Colors.teal,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Card(
+              color: Colors.white,
+              margin:
+                  const EdgeInsets.symmetric(vertical: 15.0, horizontal: 75.0),
+              child: GestureDetector(
+                onTap: () {
+                  Get.to(() => const BrakeServices());
+                },
+                child: const ListTile(
+                  leading: Icon(
+                    Icons.stop,
+                    color: Colors.teal,
+                    size: 20.0,
+                  ),
+                  title: Text(
+                    "BRAKE SERVICES",
+                    style: TextStyle(
+                        color: Colors.teal,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0),
+                  ),
+                ),
+              ),
+            ),
+            Card(
+              color: Colors.white,
+              margin:
+                  const EdgeInsets.symmetric(vertical: 15.0, horizontal: 75.0),
+              child: GestureDetector(
+                onTap: () {
+                  Get.to(() => const ElectricalServices());
+                },
+                child: const ListTile(
+                  leading: Icon(
+                    Icons.electric_car,
+                    color: Colors.teal,
+                    size: 20.0,
+                  ),
+                  title: Text(
+                    "ELECTRICAL SERVICES",
+                    style: TextStyle(
+                        color: Colors.teal,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0),
                   ),
                 ),
               ),
             ),
             const Card(
               color: Colors.white,
-              margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 125.0),
+              margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 75.0),
               child: ListTile(
                 leading: Icon(
-                  Icons.toys_outlined,
-                  color: Colors.teal,
-                  size: 20.0,
-                ),
-                title: Text(
-                  "Car Repair",
-                  style: TextStyle(
-                      color: Colors.teal,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.0),
-                ),
-              ),
-            ),
-            const Card(
-              color: Colors.white,
-              margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 125.0),
-              child: ListTile(
-                leading: Icon(
-                  Icons.wash_outlined,
-                  color: Colors.teal,
-                  size: 20.0,
-                ),
-                title: Text(
-                  "Car Wash Services",
-                  style: TextStyle(
-                      color: Colors.teal,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.0),
-                ),
-              ),
-            ),
-            const Card(
-              color: Colors.white,
-              margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 125.0),
-              child: ListTile(
-                leading: Icon(
-                  Icons.wash_outlined,
+                  Icons.devices_other,
                   color: Colors.teal,
                   size: 20.0,
                 ),

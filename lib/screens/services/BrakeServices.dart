@@ -1,49 +1,38 @@
 import 'package:flutter/material.dart';
 
-class ACServices extends StatefulWidget {
-  const ACServices({super.key});
+class BrakeServices extends StatefulWidget {
+  const BrakeServices({super.key});
 
   @override
-  State<ACServices> createState() => _ACServicesState();
+  State<BrakeServices> createState() => _BrakeServicesState();
 }
 
-class _ACServicesState extends State<ACServices> {
+class _BrakeServicesState extends State<BrakeServices> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: const Text("BRAKE SERVICES"),
+        centerTitle: true,
+      ),
+      body: const SafeArea(
         child: Column(
           children: [
             Card(
               color: Colors.white,
-              margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+              margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 75.0),
               child: ListTile(
                 leading: Icon(
-                  Icons.search_outlined,
-                  color: Colors.black,
-                  size: 20.0,
-                ),
-                title: Text(
-                  'Search',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.0,
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              color: Colors.white,
-              margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 125.0),
-              child: ListTile(
-                leading: Icon(
-                  Icons.ac_unit_outlined,
+                  Icons.change_circle_outlined,
                   color: Colors.teal,
                   size: 20.0,
                 ),
                 title: Text(
-                  'AC Installation',
+                  'Brake Inspection',
                   style: TextStyle(
                     color: Colors.teal,
                     fontWeight: FontWeight.bold,
@@ -54,15 +43,15 @@ class _ACServicesState extends State<ACServices> {
             ),
             Card(
               color: Colors.white,
-              margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 125.0),
+              margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 75.0),
               child: ListTile(
                 leading: Icon(
-                  Icons.tire_repair_outlined,
+                  Icons.adjust_outlined,
                   color: Colors.teal,
                   size: 20.0,
                 ),
                 title: Text(
-                  'AC Repairing',
+                  'Brake Pad Replacement',
                   style: TextStyle(
                     color: Colors.teal,
                     fontWeight: FontWeight.bold,
@@ -73,15 +62,15 @@ class _ACServicesState extends State<ACServices> {
             ),
             Card(
               color: Colors.white,
-              margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 125.0),
+              margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 75.0),
               child: ListTile(
                 leading: Icon(
-                  Icons.toys_outlined,
+                  Icons.find_replace_outlined,
                   color: Colors.teal,
                   size: 20.0,
                 ),
                 title: Text(
-                  "AC Dismounting",
+                  "Brake Fluid Replacement",
                   style: TextStyle(
                       color: Colors.teal,
                       fontWeight: FontWeight.bold,
@@ -91,7 +80,25 @@ class _ACServicesState extends State<ACServices> {
             ),
             Card(
               color: Colors.white,
-              margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 125.0),
+              margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 75.0),
+              child: ListTile(
+                leading: Icon(
+                  Icons.water_sharp,
+                  color: Colors.teal,
+                  size: 20.0,
+                ),
+                title: Text(
+                  "Brake Caliper Service",
+                  style: TextStyle(
+                      color: Colors.teal,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0),
+                ),
+              ),
+            ),
+            Card(
+              color: Colors.white,
+              margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 75.0),
               child: ListTile(
                 leading: Icon(
                   Icons.wash_outlined,
@@ -99,7 +106,7 @@ class _ACServicesState extends State<ACServices> {
                   size: 20.0,
                 ),
                 title: Text(
-                  "Other AC Services",
+                  "Emergency Brake Replacement",
                   style: TextStyle(
                       color: Colors.teal,
                       fontWeight: FontWeight.bold,

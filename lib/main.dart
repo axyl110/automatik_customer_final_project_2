@@ -1,3 +1,4 @@
+//import 'package:automatik_customer_final_project/screens/navbar.dart';
 import 'package:automatik_customer_final_project/screens/authentication/signupPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ void main() async {
     child: const GetMaterialApp(
       title: 'Customer App',
       home: SignUpScreen(),
+      //home: NavBar(),
       debugShowCheckedModeBanner: false,
     ),
   ));
