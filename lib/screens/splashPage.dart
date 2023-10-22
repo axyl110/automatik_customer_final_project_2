@@ -1,8 +1,9 @@
 import 'dart:async';
-import 'package:automatik_customer_final_project/screens/loginPage.dart';
 import 'package:automatik_customer_final_project/screens/navbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'authentication/loginPage.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

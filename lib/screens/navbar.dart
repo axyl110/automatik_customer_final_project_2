@@ -28,9 +28,6 @@ class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("HOME"),
-      ),
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.teal,

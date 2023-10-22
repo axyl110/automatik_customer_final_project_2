@@ -1,12 +1,13 @@
 // ignore_for_file: unnecessary_null_comparison
 
-import 'package:automatik_customer_final_project/screens/loginPage.dart';
 import 'package:automatik_customer_final_project/widgets/auth_service.dart';
 import 'package:automatik_customer_final_project/widgets/dimentions.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'authentication/loginPage.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);

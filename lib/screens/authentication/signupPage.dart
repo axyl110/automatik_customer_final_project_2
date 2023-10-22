@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:automatik_customer_final_project/screens/loginPage.dart';
 import 'package:automatik_customer_final_project/screens/navbar.dart';
 import 'package:automatik_customer_final_project/widgets/auth_service.dart';
 import 'package:automatik_customer_final_project/widgets/dimentions.dart';
@@ -15,6 +14,8 @@ import 'package:get/get.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
+
+import 'loginPage.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);

@@ -1,11 +1,12 @@
 import 'package:automatik_customer_final_project/screens/navbar.dart';
-import 'package:automatik_customer_final_project/screens/signupPage.dart';
 import 'package:automatik_customer_final_project/widgets/auth_service.dart';
 import 'package:automatik_customer_final_project/widgets/dimentions.dart';
 import 'package:automatik_customer_final_project/widgets/roundedButton.dart';
 import 'package:automatik_customer_final_project/widgets/textfield.dart';
 import 'package:automatik_customer_final_project/widgets/validators.dart';
 import 'package:flutter/material.dart';
+
+import 'signupPage.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

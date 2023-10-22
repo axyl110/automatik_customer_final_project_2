@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthController {
-  // static final FirebaseFirestore _database = FirebaseFirestore.instance;
+  static final FirebaseFirestore _database = FirebaseFirestore.instance;
   var firebaseAuth = FirebaseAuth.instance;
   var firebaseStore = FirebaseFirestore.instance;
 
