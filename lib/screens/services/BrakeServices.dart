@@ -78,7 +78,7 @@ class _BrakeServicesState extends State<BrakeServices> {
                             ),
                             TextButton(
                               onPressed: () {
-                                users.doc(snap.id).add({
+                                users.doc(snap.id).update({
                                   'Name': snap['Name'],
                                   'Phone': snap['Phone'],
                                   'Email': snap['Email'],
