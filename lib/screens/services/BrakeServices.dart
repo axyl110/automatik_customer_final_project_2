@@ -12,6 +12,8 @@ class BrakeServices extends StatefulWidget {
 class _BrakeServicesState extends State<BrakeServices> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   User? loggedInUser;
+  var collection = FirebaseFirestore.instance.collection('ORDER');
+
   final CollectionReference users =
       FirebaseFirestore.instance.collection('Customers');
 
@@ -20,14 +22,13 @@ class _BrakeServicesState extends State<BrakeServices> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: const Text("BRAKE SERVICES"),
         centerTitle: true,
       ),
-      body: Container(
-          child: Column(
+      body: Column(
         children: [
           Expanded(
             child: StreamBuilder<QuerySnapshot>(
@@ -38,161 +39,127 @@ class _BrakeServicesState extends State<BrakeServices> {
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (!snapshot.hasData) return const Text("Loading...");
-                  return Container(
-                    child: ListView(
-                      children:
-                          snapshot.data!.docs.map((DocumentSnapshot snap) {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            TextButton(
-                              onPressed: () {
-                                users.doc(snap.id).set({
-                                  'Name': snap['Name'],
-                                  'Phone': snap['Phone'],
-                                  'Email': snap['Email'],
-                                  'Address': snap['Address'],
-                                  'Service': ['Brake Inspection'],
-                                });
-                              },
-                              child: const Card(
-                                color: Colors.white,
-                                margin: EdgeInsets.symmetric(
-                                    vertical: 15.0, horizontal: 75.0),
-                                child: ListTile(
-                                  leading: Icon(
-                                    Icons.add,
+                  return ListView(
+                    children: snapshot.data!.docs.map((DocumentSnapshot snap) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              users.doc(snap.id).set({
+                                'Name': snap['Name'],
+                                'Phone': snap['Phone'],
+                                'Email': snap['Email'],
+                                'Address': snap['Address'],
+                                'ProfileImage': snap['ProfileImage'],
+                                'Service': ['Brake Inspection'],
+                              });
+                            },
+                            child: const Card(
+                              color: Colors.white,
+                              margin: EdgeInsets.symmetric(
+                                  vertical: 15.0, horizontal: 75.0),
+                              child: ListTile(
+                                title: Text(
+                                  'Brake Inspection',
+                                  style: TextStyle(
                                     color: Colors.teal,
-                                    size: 20.0,
-                                  ),
-                                  title: Text(
-                                    'Brake Inspection',
-                                    style: TextStyle(
-                                      color: Colors.teal,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0,
-                                    ),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20.0,
                                   ),
                                 ),
                               ),
                             ),
-                            TextButton(
-                              onPressed: () {
-                                users.doc(snap.id).update({
-                                  'Name': snap['Name'],
-                                  'Phone': snap['Phone'],
-                                  'Email': snap['Email'],
-                                  'Address': snap['Address'],
-                                  'Service': ['Brake Pad Replacement'],
-                                });
-                              },
-                              child: const Card(
-                                color: Colors.white,
-                                margin: EdgeInsets.symmetric(
-                                    vertical: 15.0, horizontal: 75.0),
-                                child: ListTile(
-                                  leading: Icon(
-                                    Icons.add,
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              users.doc(snap.id).set({
+                                'Name': snap['Name'],
+                                'Phone': snap['Phone'],
+                                'Email': snap['Email'],
+                                'Address': snap['Address'],
+                                'ProfileImage': snap['ProfileImage'],
+                                'Service': ['Brake Fluid Replacement'],
+                              });
+                            },
+                            child: const Card(
+                              color: Colors.white,
+                              margin: EdgeInsets.symmetric(
+                                  vertical: 15.0, horizontal: 75.0),
+                              child: ListTile(
+                                title: Text(
+                                  'Brake Fluid Replacement',
+                                  style: TextStyle(
                                     color: Colors.teal,
-                                    size: 20.0,
-                                  ),
-                                  title: Text(
-                                    'Brake Pad Replacement',
-                                    style: TextStyle(
-                                      color: Colors.teal,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0,
-                                    ),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20.0,
                                   ),
                                 ),
                               ),
                             ),
-                            // const Card(
-                            //   color: Colors.white,
-                            //   margin: EdgeInsets.symmetric(
-                            //       vertical: 15.0, horizontal: 75.0),
-                            //   child: ListTile(
-                            //     leading: Icon(
-                            //       Icons.adjust_outlined,
-                            //       color: Colors.teal,
-                            //       size: 20.0,
-                            //     ),
-                            //     title: Text(
-                            //       'Brake Pad Replacement',
-                            //       style: TextStyle(
-                            //         color: Colors.teal,
-                            //         fontWeight: FontWeight.bold,
-                            //         fontSize: 20.0,
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
-                            const Card(
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              users.doc(snap.id).set({
+                                'Name': snap['Name'],
+                                'Phone': snap['Phone'],
+                                'Email': snap['Email'],
+                                'Address': snap['Address'],
+                                'ProfileImage': snap['ProfileImage'],
+                                'Service': ['Brake Caliper Service'],
+                              });
+                            },
+                            child: const Card(
                               color: Colors.white,
                               margin: EdgeInsets.symmetric(
                                   vertical: 15.0, horizontal: 75.0),
                               child: ListTile(
-                                leading: Icon(
-                                  Icons.find_replace_outlined,
-                                  color: Colors.teal,
-                                  size: 20.0,
-                                ),
                                 title: Text(
-                                  "Brake Fluid Replacement",
+                                  'Brake Caliper Service',
                                   style: TextStyle(
-                                      color: Colors.teal,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0),
+                                    color: Colors.teal,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20.0,
+                                  ),
                                 ),
                               ),
                             ),
-                            const Card(
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              users.doc(snap.id).set({
+                                'Name': snap['Name'],
+                                'Phone': snap['Phone'],
+                                'Email': snap['Email'],
+                                'Address': snap['Address'],
+                                'ProfileImage': snap['ProfileImage'],
+                                'Service': ['Emergency Brake Replacement'],
+                              });
+                            },
+                            child: const Card(
                               color: Colors.white,
                               margin: EdgeInsets.symmetric(
                                   vertical: 15.0, horizontal: 75.0),
                               child: ListTile(
-                                leading: Icon(
-                                  Icons.water_sharp,
-                                  color: Colors.teal,
-                                  size: 20.0,
-                                ),
                                 title: Text(
-                                  "Brake Caliper Service",
+                                  'Emergency Brake Replacement',
                                   style: TextStyle(
-                                      color: Colors.teal,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0),
+                                    color: Colors.teal,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20.0,
+                                  ),
                                 ),
                               ),
                             ),
-                            const Card(
-                              color: Colors.white,
-                              margin: EdgeInsets.symmetric(
-                                  vertical: 15.0, horizontal: 75.0),
-                              child: ListTile(
-                                leading: Icon(
-                                  Icons.wash_outlined,
-                                  color: Colors.teal,
-                                  size: 20.0,
-                                ),
-                                title: Text(
-                                  "Emergency Brake Replacement",
-                                  style: TextStyle(
-                                      color: Colors.teal,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0),
-                                ),
-                              ),
-                            ),
-                          ],
-                        );
-                      }).toList(),
-                    ),
+                          ),
+                        ],
+                      );
+                    }).toList(),
                   );
                 }),
           ),
         ],
-      )),
+      ),
     );
   }
 }

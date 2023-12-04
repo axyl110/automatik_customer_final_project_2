@@ -1,3 +1,4 @@
+import 'package:automatik_customer_final_project/screens/cart/cart.dart';
 import 'package:automatik_customer_final_project/screens/homePage.dart';
 import 'package:automatik_customer_final_project/screens/profilePage.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class _NavBarState extends State<NavBar> {
 
   List pages = [
     const HomePage(),
-    const Text("HISTORY"),
+    const CartPage(),
     const Text("MESSAGES"),
     const ProfilePage()
   ];
