@@ -10,7 +10,6 @@ class WheelServices extends StatefulWidget {
 }
 
 class _WheelServicesState extends State<WheelServices> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   User? loggedInUser;
   var collection = FirebaseFirestore.instance.collection('ORDER');
 

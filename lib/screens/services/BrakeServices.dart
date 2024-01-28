@@ -10,7 +10,6 @@ class BrakeServices extends StatefulWidget {
 }
 
 class _BrakeServicesState extends State<BrakeServices> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   User? loggedInUser;
   var collection = FirebaseFirestore.instance.collection('ORDER');
 

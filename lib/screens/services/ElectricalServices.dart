@@ -10,7 +10,6 @@ class ElectricalServices extends StatefulWidget {
 }
 
 class _ElectricalServicesState extends State<ElectricalServices> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   User? loggedInUser;
   var collection = FirebaseFirestore.instance.collection('ORDER');
 

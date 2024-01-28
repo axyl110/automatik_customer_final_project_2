@@ -10,7 +10,6 @@ class EngineServices extends StatefulWidget {
 }
 
 class _EngineServicesState extends State<EngineServices> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   User? loggedInUser;
   final CollectionReference users =
       FirebaseFirestore.instance.collection('Customers');

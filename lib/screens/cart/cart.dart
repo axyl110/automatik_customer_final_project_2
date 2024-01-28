@@ -67,17 +67,6 @@ class _CartPageState extends State<CartPage> {
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                // CircleAvatar(
-                                //     radius: 85,
-                                //     backgroundColor: Colors.blue,
-                                //     child: ClipRRect(
-                                //       borderRadius: BorderRadius.circular(50),
-                                //       child: Image.network(
-                                //         snap['ProfileImage'],
-                                //         fit: BoxFit.cover,
-                                //       ),
-                                //     )),
-                                // SizedBox(height: Dimensions.height20),
                                 Row(
                                   children: [
                                     const Icon(Icons.person),

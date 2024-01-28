@@ -270,21 +270,16 @@ class _ProfilePageState extends State<ProfilePage> {
                   final String phone = _phoneController.text;
                   final String email = _emailController.text;
                   final String address = _addressController.text;
-                  if (name != null &&
-                      phone != null &&
-                      email != null &&
-                      address != null) {
-                    await users.doc(documentSnapshot!.id).update({
-                      "Name": name,
-                      "Phone": phone,
-                      "Email": email,
-                      "Address": address
-                    });
-                    _nameController.text = '';
-                    _phoneController.text = '';
-                    _emailController.text = '';
-                    _addressController.text = '';
-                  }
+                  await users.doc(documentSnapshot!.id).update({
+                    "Name": name,
+                    "Phone": phone,
+                    "Email": email,
+                    "Address": address
+                  });
+                  _nameController.text = '';
+                  _phoneController.text = '';
+                  _emailController.text = '';
+                  _addressController.text = '';
                 },
               ),
             ],
