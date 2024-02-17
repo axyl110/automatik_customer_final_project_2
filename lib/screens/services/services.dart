@@ -14,6 +14,7 @@ class Services extends StatefulWidget {
 }
 
 class ServicesState extends State<Services> {
+  List<String> selectedServices = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

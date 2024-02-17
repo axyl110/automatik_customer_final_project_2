@@ -46,13 +46,13 @@ class _EngineServicesState extends State<EngineServices> {
                           children: [
                             TextButton(
                               onPressed: () {
-                                users.doc(snap.id).set({
+                                users.doc(snap.id).update({
                                   'Name': snap['Name'],
                                   'Phone': snap['Phone'],
                                   'Email': snap['Email'],
                                   'Address': snap['Address'],
                                   'ProfileImage': snap['ProfileImage'],
-                                  'Service': ['Oil Change'],
+                                  'Service': FieldValue.arrayUnion(['Oil Change']),
                                 });
                               },
                               child: const Card(
@@ -78,13 +78,13 @@ class _EngineServicesState extends State<EngineServices> {
                             ),
                             TextButton(
                               onPressed: () {
-                                users.doc(snap.id).set({
+                                users.doc(snap.id).update({
                                   'Name': snap['Name'],
                                   'Phone': snap['Phone'],
                                   'Email': snap['Email'],
                                   'Address': snap['Address'],
                                   'ProfileImage': snap['ProfileImage'],
-                                  'Service': ['Belt Tension Adjustment'],
+                                  'Service': FieldValue.arrayUnion(['Belt Tension Adjustment']),
                                 });
                               },
                               child: const Card(
